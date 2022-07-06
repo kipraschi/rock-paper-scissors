@@ -5,7 +5,7 @@ game();
 
 function game() {
 	for (let i = 0; i < 5; i++) {
-		var playerSelection = prompt(`Rock, Paper, Scissors?`);
+		var playerSelection = prompt(`Game ${i+1}/5: Rock, Paper, Scissors?`);
 		if (
 			playerSelection.toLowerCase() != `rock` &&
 			playerSelection.toLowerCase() != `paper` &&
@@ -14,11 +14,14 @@ function game() {
 			alert(`Choose Rock, Paper or Scissors next time! Computer wins this round.`);
 		var computerSelection = computerPlay();
 		playRound(playerSelection, computerSelection);
+        
 		console.log(`Game ${i + 1}:`);
 		console.log(`Player selection: ${playerSelection}, score: ${playerScore}`);
-		console.log(`Computer selection: ${computerSelection}, score: ${computerScore} \n\n`);
+		console.log(`Computer selection: ${computerSelection}, score: ${computerScore}`);
+        console.log(`Player ${playerScore}:${computerScore} Computer \n\n`);
 	}
 	console.log(findWinner());
+    alert(findWinner());
 }
 
 function computerPlay() {
