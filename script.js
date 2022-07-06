@@ -1,51 +1,59 @@
 function computerPlay() {
-let random = Math.floor(Math.random() * 3 + 1);
+let random = Math.floor(Math.random() * 3) + 1;
 let object;
-switch (random) {
-    case 1:
-        object = 'Paper';
-        break;
-    case 2:
-        object = 'Scissors';
-        break; 
-    default:
-        object = 'Rock';
-        break;
-}
+        
+if (random == 1) object = 'Rock';
+else if (random == 2) object = 'Paper';
+else if (random == 3) object = 'Scissors';
+
 return object;
 }
 
+var playerScore = 0;
+var computerScore = 0;
 
-function playRound(playerSelection, computerSelection){
+//playRound() increases global score of the winner
+function playRound(playerSelection, computerSelection){ 
     // rock > scissors
     if (playerSelection.toLowerCase() == `rock` && 
-        computerSelection.toLowerCase() == `scissors`)
-        return `You Win! ${playerSelection} beats ${computerSelection}`;
+    computerSelection.toLowerCase() == `scissors`)
+        playerScore++;
     if (playerSelection.toLowerCase() == `scissors` && 
-        computerSelection.toLowerCase() == `rock`)
-        return `You Lose! ${computerSelection} beats ${playerSelection}`;
+    computerSelection.toLowerCase() == `rock`)
+        computerScore++;
     // paper > rock
     if (playerSelection.toLowerCase() == `paper` && 
-        computerSelection.toLowerCase() == `rock`)
-        return `You Win! ${playerSelection} beats ${computerSelection}`;
+    computerSelection.toLowerCase() == `rock`)
+        playerScore++;
     if (playerSelection.toLowerCase() == `rock` && 
-        computerSelection.toLowerCase() == `paper`)
-        return `You Lose! ${computerSelection} beats ${playerSelection}`;
+    computerSelection.toLowerCase() == `paper`)
+        computerScore++;
     // scissors > paper
     if (playerSelection.toLowerCase() == `scissors` && 
-        computerSelection.toLowerCase() == `paper`)
-        return `You Win! ${playerSelection} beats ${computerSelection}`;
+    computerSelection.toLowerCase() == `paper`)
+        playerScore++;
     if (playerSelection.toLowerCase() == `paper` && 
-        computerSelection.toLowerCase() == `scissors`)
-        return `You Lose! ${computerSelection} beats ${playerSelection}`;
-
-    else
-        return `It's a tie. Play another round`;
+    computerSelection.toLowerCase() == `scissors`)
+        computerScore++;
 }
 
-const playerSelection = 'Rock';
-const computerSelection = computerPlay();
+function findWinner(){
+    if (playerScore > computerScore) return `You won!`;
+    else return `You lose!`;
+}
 
-console.log(`Player: ${playerSelection}`); //debug
-console.log(`Computer: ${computerSelection}`); //debug
-console.log(playRound(playerSelection, computerSelection));
+function game(){
+    for (let i = 0; i < 5; i++) {
+        let playerSelection = 'Rock';
+        let computerSelection = computerPlay();
+        playRound(playerSelection, computerSelection);
+        console.log(`Game ${i + 1}:`);
+        console.log(`Player selection: ${playerSelection}, score: ${playerScore}`);
+        console.log(`Computer selection: ${computerSelection}, score: ${computerScore} \n\n`);
+    }
+    console.log(findWinner());
+}
+
+game();
+
+// console.log(playRound(playerSelection, computerSelection));
