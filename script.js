@@ -16,8 +16,8 @@ function game() {
 		playRound(playerSelection, computerSelection);
         
 		console.log(`Game ${i + 1}:`);
-		console.log(`Player selection: ${playerSelection}, score: ${playerScore}`);
-		console.log(`Computer selection: ${computerSelection}, score: ${computerScore}`);
+		console.log(`Player: ${playerSelection}`);
+		console.log(`Computer: ${computerSelection}`);
         console.log(`Player ${playerScore}:${computerScore} Computer \n\n`);
 	}
 	console.log(findWinner());
