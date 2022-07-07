@@ -1,5 +1,5 @@
-var playerScore = 0;
-var computerScore = 0;
+let playerScore = 0;
+let computerScore = 0;
 
 game();
 
@@ -26,33 +26,27 @@ function game() {
 
 function computerPlay() {
 	let random = Math.floor(Math.random() * 3) + 1;
-	let object;
 
-	if (random == 1) object = "Rock";
-	else if (random == 2) object = "Paper";
-	else if (random == 3) object = "Scissors";
-
-	return object;
+	if (random == 1) return "Rock";
+	else if (random == 2) return "Paper";
+	else if (random == 3) return "Scissors";
 }
 
 function playRound(playerSelection, computerSelection) {
-	// rock > scissors
-	if (playerSelection.toLowerCase() == `rock` && computerSelection.toLowerCase() == `scissors`)
+	if (
+		(playerSelection.toLowerCase() == `rock` && computerSelection.toLowerCase() == `scissors`) ||
+		(playerSelection.toLowerCase() == `paper` && computerSelection.toLowerCase() == `rock`) ||
+		(playerSelection.toLowerCase() == `scissors` && computerSelection.toLowerCase() == `paper`)
+	)
 		return playerScore++;
-	if (playerSelection.toLowerCase() == `scissors` && computerSelection.toLowerCase() == `rock`)
+	if (
+		(playerSelection.toLowerCase() == `scissors` && computerSelection.toLowerCase() == `rock`) ||
+		(playerSelection.toLowerCase() == `rock` && computerSelection.toLowerCase() == `paper`) ||
+		(playerSelection.toLowerCase() == `paper` && computerSelection.toLowerCase() == `scissors`)
+	)
 		return computerScore++;
-	// paper > rock
-	if (playerSelection.toLowerCase() == `paper` && computerSelection.toLowerCase() == `rock`)
-		return playerScore++;
-	if (playerSelection.toLowerCase() == `rock` && computerSelection.toLowerCase() == `paper`)
-		return computerScore++;
-	// scissors > paper
-	if (playerSelection.toLowerCase() == `scissors` && computerSelection.toLowerCase() == `paper`)
-		return playerScore++;
-	if (playerSelection.toLowerCase() == `paper` && computerSelection.toLowerCase() == `scissors`)
-		return computerScore++;
-	//a tie keeps doesn't change the scores,
-	//but if a player enters something else than the given selections computer gains a point
+
+	// computer gains a point when the player choice is neither rock, paper
 	else if (playerSelection.toLowerCase() != computerSelection.toLowerCase()) return computerScore++;
 }
 
