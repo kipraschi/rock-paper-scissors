@@ -27,26 +27,26 @@
         <div id="game">
             <div id="results">
                 <div id="playerRound">
-                    <img id="playerSelection" src="./img/question-solid.svg" height="150px">
+                    <img id="playerSelection" height="150px">
                 </div>
                 <div id="line"></div>
                 <div id="computerRound">
-                    <img id="computerSelection" src="./img/question-solid.svg" height="150px">
+                    <img id="computerSelection" height="150px">
                 </div>
             </div>
             <div id="choices">
-                <button id="Rock">
+                <button class="selector" id="Rock" >
                     <img src="./img/rock.svg" height="150px">
                 </button>
                 </button>
-                <button id="Paper">
+                <button class="selector" id="Paper">
                     <img src="./img/paper.svg" height="150px">
                 </button>
-                <button id="Scissors">
+                <button class="selector" id="Scissors">
                     <img src="./img/scissors.svg" height="150px">
                 </button>
             </div>
-            <div id="underline"></div>
+            <div id="underline">Choose your weapon!</div>
         </div>
         
         <div id="scoreRight">
@@ -56,7 +56,13 @@
     </div>
     
 
-
+    <div class="modal-container"
+     id="modal-container">
+        <div id="modal">
+            <h1 id="outcome">Who won?</h1>
+            <button id="close-modal">Play again</button>
+        </div>
+    </div>
         
 
 </body>
