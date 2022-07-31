@@ -4,19 +4,60 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Rock Paper Scissors</title>
+    <link rel="icon" href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSJ4iuiTZy0TyLljgYqkn2eApcHuCZAnqf3gBAlMM9z_YRYw0GkczLLftqeLFEx3Heqeag&usqp=CAU">
     <script src="script.js" defer></script>
     <link rel="stylesheet" href="styles.css"></link>
 </head>
 <body>
 
-    <div id="results"></div>
+    <div id="heading">
+        <div class="container">
+            <div id="title">Rock Paper Scissors</div>
+            <div id="subtitle">First to score 5 points wins the game</div>
+        </div>
+    </div>
 
-     <div id="choices">
-        <button id="Rock">Rock</button>
-        <button id="Paper">Paper</button>
-        <button id="Scissors">Scissors</button>
-     </div>
+    <div id="main">
+        <div id="scoreLeft">
+            <div class="scoreNo playerScore">0</div>
+            <div class="scoreText">Score</div>
+        </div>
+    
+        <div id="game">
+            <div id="results">
+                <div>
+                    <img id="playerSelection" src="./img/question-solid.svg" height="150px">
+                </div>
+                <div id="line"></div>
+                <div>
+                    <img id="computerSelection" src="./img/question-solid.svg" height="150px">
+                </div>
+            </div>
+            <div id="choices">
+                <button id="Rock">
+                    <img src="./img/rock.svg" height="150px">
+                </button>
+                </button>
+                <button id="Paper">
+                    <img src="./img/paper.svg" height="150px">
+                </button>
+                <button id="Scissors">
+                    <img src="./img/scissors.svg" height="150px">
+                </button>
+            </div>
+            <div id="underline"></div>
+        </div>
+        
+        <div id="scoreRight">
+            <div class="scoreNo computerScore">0</div>
+            <div class="scoreText">Score</div>
+        </div>
+    </div>
+    
+
+
+        
 
 </body>
 

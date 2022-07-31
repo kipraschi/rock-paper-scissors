@@ -29,6 +29,7 @@ body {
 
 #subtitle {
 	font-size: 36px;
+    margin-top: 10px;
 }
 
 #main {
@@ -47,7 +48,6 @@ body {
 }
 
 #game {
-	/* justify-content: space-around; */
 	gap: 30px;
 }
 
@@ -58,7 +58,7 @@ body {
 }
 
 #line {
-	border: 2px solid #000000;
+	border: 1.5px solid #000000;
 }
 
 #choices {
@@ -83,13 +83,13 @@ body {
 
 button {
 	background-color: white;
-	border: solid black;
+	border: 2px solid black;
 	height: 180;
 	width: 180;
 	border-radius: 50%;
 }
 
-button:hover {
+button:hover, .clicked {
 	background-color: #8194f2;
 }
 
@@ -103,4 +103,8 @@ button:hover {
 
 .loser{
     color: red;
+}
+
+#results > img{
+    height: 200px;
 }
