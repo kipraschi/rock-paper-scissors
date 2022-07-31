@@ -11,7 +11,7 @@ body {
 
 #heading {
 	background-color: #8194f2;
-	height: 300px;
+	height: 270px;
 	display: flex;
 	flex-flow: column wrap;
 	justify-content: center;
@@ -21,7 +21,6 @@ body {
 	align-self: center;
 }
 
-/* text sticking out when on mobile */
 #title {
 	font-size: 96px;
 	text-transform: uppercase;
@@ -48,16 +47,22 @@ body {
 }
 
 #game {
-	gap: 30px;
+	gap: 60px;
 }
 
 #results {
 	height: 150px;
 	display: flex;
-	gap: 68px;
+    gap: 68px;
+}
+
+#playerRound, #computerRound{
+    display: flex;
+    flex-direction: column;
 }
 
 #line {
+    height: 180px;
 	border: 1.5px solid #000000;
 }
 
@@ -72,8 +77,9 @@ body {
 	font-size: 48px;
 }
 
-.scoreText {
+.text {
 	font-size: 24px;
+    text-align: center;
 }
 
 .noSelection {
@@ -81,7 +87,7 @@ body {
     text-align: center;
 }
 
-button {
+#choices > button {
 	background-color: white;
 	border: 2px solid black;
 	height: 180;
@@ -89,20 +95,12 @@ button {
 	border-radius: 50%;
 }
 
-button:hover, .clicked {
+#choices > button:hover, .clicked {
 	background-color: #8194f2;
 }
 
 #underline {
 	font-size: 32px;
-}
-
-.winner{
-    color: green;
-}
-
-.loser{
-    color: red;
 }
 
 #results > img{

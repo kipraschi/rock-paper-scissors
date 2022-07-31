@@ -12,8 +12,14 @@ let playerChoice = document.querySelector("#playerSelection");
 let computerChoice = document.querySelector("#computerSelection");
 let playerScoreDisplay = document.querySelector(".playerScore");
 let computerScoreDisplay = document.querySelector(".computerScore");
-// let playerRound = document.createElement("div");
-// let computerRound = document.createElement("div");
+
+let playerRoundInfo = document.createElement("div");
+playerRoundInfo.setAttribute("class", "text");
+document.querySelector("#playerRound").appendChild(playerRoundInfo);
+
+let computerRoundInfo = document.createElement("div");
+computerRoundInfo.setAttribute("class", "text");
+document.querySelector("#computerRound").appendChild(computerRoundInfo);
 
 let buttons = document.querySelectorAll("button");
 
@@ -31,17 +37,28 @@ function playRound(playerSelection) {
 	let computerSelection = computerPlay();
 
 	if (
+		//player wins
 		(playerSelection == `Rock` && computerSelection == `Scissors`) ||
 		(playerSelection == `Paper` && computerSelection == `Rock`) ||
 		(playerSelection == `Scissors` && computerSelection == `Paper`)
-	)
+	) {
 		playerScore++;
-	if (
+		playerRoundInfo.style.color = "#5CCA35";
+		computerRoundInfo.style.color = "#CE2F2F";
+	} else if (
+		//computer wins
 		(playerSelection == `Scissors` && computerSelection == `Rock`) ||
 		(playerSelection == `Rock` && computerSelection == `Paper`) ||
 		(playerSelection == `Paper` && computerSelection == `Scissors`)
-	)
+	) {
 		computerScore++;
+		computerRoundInfo.style.color = "#5CCA35";
+		playerRoundInfo.style.color = "#CE2F2F";
+	} else {
+		//tie
+		computerRoundInfo.style.color = "black";
+		playerRoundInfo.style.color = "black";
+	}
 
 	updatePage(playerSelection, computerSelection);
 }
@@ -74,6 +91,9 @@ function updatePage(playerSelection, computerSelection) {
 function displayScore() {
 	playerScoreDisplay.textContent = `${playerScore}`;
 	computerScoreDisplay.textContent = `${computerScore}`;
+
+	playerRoundInfo.textContent = `You(${playerScore})`;
+	computerRoundInfo.textContent = `Computer(${computerScore})`;
 }
 
 function getIconSrc(selection) {
