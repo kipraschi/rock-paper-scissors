@@ -7,7 +7,7 @@
 body {
 	display: flex;
 	flex-direction: column;
-	min-height: 100vh;
+	height: 100vh;
 	margin: 0px;
 	padding: 0px;
 	background: #f5f5f5;
@@ -15,7 +15,7 @@ body {
 
 #heading {
 	background-color: #8194f2;
-	height: 270px;
+	height: 35vh;
 	display: flex;
 	flex-flow: column wrap;
 	justify-content: center;
@@ -26,12 +26,12 @@ body {
 }
 
 #title {
-	font-size: 96px;
+	font-size: 6em;
 	text-transform: uppercase;
 }
 
 #subtitle {
-	font-size: 36px;
+	font-size: 2.25em;
 	margin-top: 10px;
 }
 
@@ -51,7 +51,9 @@ body {
 }
 
 #game {
+	height: 65vh;
 	gap: 50px;
+	justify-content: space-evenly;
 }
 
 #results {
@@ -84,11 +86,6 @@ body {
 
 .text {
 	font-size: 24px;
-	text-align: center;
-}
-
-.noSelection {
-	font-size: 111px;
 	text-align: center;
 }
 
