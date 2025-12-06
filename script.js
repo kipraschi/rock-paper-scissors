@@ -1,6 +1,3 @@
-let humanScore = computerScore = 0;
-
-
 function getComputerChoice () {
     // generate random number 0-2
     let randomNumber = Math.floor(Math.random() * 3);
@@ -26,36 +23,38 @@ function getHumanChoice() {
     return humanChoice;
 }
 
-const playRound = (humanChoice = getHumanChoice(), computerChoice = getComputerChoice()) => {
-    const setRoundWinner = (winner) => {
-        if (winner == "computer") {
-            computerScore++;
-            alert(`You Lose! ${computerChoice} beats ${humanChoice}!`)
-        } 
-        else {
-            humanScore++;
-            alert(`You Win! ${humanChoice} beats ${computerChoice}!`);
-        }
-    }
-    
-    if (humanChoice == computerChoice) {
-        alert("It's a tie!");
-    }
-    else if ((humanChoice == "rock" && computerChoice === "paper") ||
-    (humanChoice === "paper" && computerChoice === "scissors") ||
-    (humanChoice === "scissors" && computerChoice === "rock")) {
-        setRoundWinner("computer");
-    }
-    else {
-        setRoundWinner("human");
-    }
-    
-}
-
 const playGame = (rounds = 5) => {
 
+    let humanScore = 0, computerScore = 0;
+
+    const playRound = (humanChoice = getHumanChoice(), computerChoice = getComputerChoice()) => {
+        const setRoundWinner = (winner) => {
+            if (winner == "computer") {
+                computerScore++;
+                alert(`You Lose! ${computerChoice} beats ${humanChoice}!`)
+            } 
+            else {
+                humanScore++;
+                alert(`You Win! ${humanChoice} beats ${computerChoice}!`);
+            }
+        }
+        
+        if (humanChoice == computerChoice) {
+            alert("It's a tie!");
+        }
+        else if ((humanChoice == "rock" && computerChoice === "paper") ||
+        (humanChoice === "paper" && computerChoice === "scissors") ||
+        (humanChoice === "scissors" && computerChoice === "rock")) {
+            setRoundWinner("computer");
+        }
+        else {
+            setRoundWinner("human");
+        }
+    
+    }
+
     // play multiple rounds
-    for (i = 0; i < rounds; i++) {
+    for (let i = 0; i < rounds; i++) {
         playRound();
         console.log(`Player ${humanScore} : ${computerScore} Computer`);
     };
@@ -64,6 +63,7 @@ const playGame = (rounds = 5) => {
         humanScore > computerScore ? alert("You won the game!") : alert ("You lost the game.")
     }
     // one more round if it's a tie
+    // BUG: doesn't handle the case where it is also a tie
     else {
         playRound();
     }
