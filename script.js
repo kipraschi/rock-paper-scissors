@@ -1,13 +1,9 @@
 let humanScore = computerScore = 0;
 
 const getComputerChoice = () => {
-// COMPUTE random int between 0 and 2
+// generate random number 0-2
     let randomNumber = Math.floor(Math.random() * 3);
-// CASE number OF
-// 0    : OUTPUT "rock"
-// 1    : OUTPUT "paper"
-// 2    : OUTPUT "scissors"
-// ENDCASE
+// CONVERT the random int to a choice
     switch (randomNumber) {
         case 0:
             return "rock"
@@ -23,11 +19,14 @@ const getComputerChoice = () => {
 
 const getHumanChoice = () => {
 // PROMPT humanChoice
-// SET humanChoice to humanChoice.toLowerCase
-// IF  humanChoice == "rock"
-//      OR  "paper" 
-//      OR "scissors" THEN
-// OUTPUT humanChoice
+let humanChoice = prompt("Choose your weapon: ");
+// convert humanChoice to LowerCase
+humanChoice = humanChoice.toLowerCase();
+// validate input
+if (humanChoice === "rock" || humanChoice === "paper" || humanChoice === "scissors")
+    return humanChoice;
+else 
+    console.log("No such weapon in the armory.");
 }
 
 const playRound = (humanChoice, computerChoice) => {
