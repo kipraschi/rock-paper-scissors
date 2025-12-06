@@ -1,7 +1,7 @@
 let humanScore = computerScore = 0;
 
 
-const getComputerChoice = () => {
+function getComputerChoice () {
     // generate random number 0-2
     let randomNumber = Math.floor(Math.random() * 3);
     console.log(randomNumber);
@@ -20,14 +20,14 @@ const getComputerChoice = () => {
     }
 }
 
-const getHumanChoice = () => {
+function getHumanChoice() {
     let humanChoice = prompt("Choose your weapon: ");
     humanChoice = humanChoice.toLowerCase();
     return humanChoice;
 }
 
-const playRound = (humanChoice, computerChoice) => {
-    const declareRoundWinner = (winner) => {
+const playRound = (humanChoice = getHumanChoice(), computerChoice = getComputerChoice()) => {
+    const setRoundWinner = (winner) => {
         if (winner == "computer") {
             computerScore++;
             alert(`You Lose! ${computerChoice} beats ${humanChoice}!`)
@@ -44,32 +44,29 @@ const playRound = (humanChoice, computerChoice) => {
     else if ((humanChoice == "rock" && computerChoice === "paper") ||
     (humanChoice === "paper" && computerChoice === "scissors") ||
     (humanChoice === "scissors" && computerChoice === "rock")) {
-        declareRoundWinner("computer");
+        setRoundWinner("computer");
     }
     else {
-        declareRoundWinner("human");
+        setRoundWinner("human");
     }
     
 }
 
-    let humanChoice = getHumanChoice();
-    let computerChoice = getComputerChoice();
-    playRound(humanChoice, computerChoice)
-
 const playGame = (rounds = 5) => {
 
-    let humanChoice = getHumanChoice();
-    let computerChoice = getComputerChoice();
-
-    // FOR each round
-    // CALL playRound();
-    // ENDLOOP
-
-    // IF humanScore > computerScore THEN
-    // winner = human
-    // ELSE 
-    // winner = computer
-
-    // PRINT winner
+    // play multiple rounds
+    for (i = 0; i < rounds; i++) {
+        playRound();
+        console.log(`Player ${humanScore} : ${computerScore} Computer`);
+    };
+    // check who won after all rounds
+    if (humanScore != computerScore) {
+        humanScore > computerScore ? alert("You won the game!") : alert ("You lost the game.")
+    }
+    // one more round if it's a tie
+    else {
+        playRound();
+    }
 }
 
+playGame();
