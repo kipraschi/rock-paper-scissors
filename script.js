@@ -1,33 +1,24 @@
+const elements = [`Rock`, `Paper`, `Scissors`];
+
 function getComputerChoice () {
-    // generate random number 0-2
     let randomNumber = Math.floor(Math.random() * 3);
-    console.log(randomNumber);
-    
-    // CONVERT the random int to a choice 
-    switch (randomNumber) {
-        case 0:
-            return "rock"
-        case 1:
-            return "paper"
-        case 2:
-            return "scissors"
-        default:
-            alert("Computer didn't decide");
-        break;
-    }
+    return elements[randomNumber];
 }
 
 function getHumanChoice() {
     let humanChoice = prompt("Choose your weapon: ");
-    humanChoice = humanChoice.toLowerCase();
-    return humanChoice;
+    for (const e of elements)
+        if (e.toLowerCase === humanChoice.toLowerCase) 
+            return e;
+        else 
+            alert(`No such weapon!`);
 }
 
 const playGame = (rounds = 5) => {
 
     let humanScore = 0, computerScore = 0;
 
-    const playRound = (humanChoice = getHumanChoice(), computerChoice = getComputerChoice()) => {
+    const playRound = (humanChoice, computerChoice) => {
         const setRoundWinner = (winner) => {
             if (winner == "computer") {
                 computerScore++;
@@ -39,12 +30,12 @@ const playGame = (rounds = 5) => {
             }
         }
         
-        if (humanChoice == computerChoice) {
+        if (humanChoice.toLowerCase() === computerChoice.toLowerCase()) {
             alert("It's a tie!");
         }
-        else if ((humanChoice == "rock" && computerChoice === "paper") ||
-        (humanChoice === "paper" && computerChoice === "scissors") ||
-        (humanChoice === "scissors" && computerChoice === "rock")) {
+        else if ((humanChoice.toLowerCase() == "rock" && computerChoice.toLowerCase() === "paper") ||
+        (humanChoice.toLowerCase() === "paper" && computerChoice.toLowerCase() === "scissors") ||
+        (humanChoice.toLowerCase() === "scissors" && computerChoice.toLowerCase() === "rock")) {
             setRoundWinner("computer");
         }
         else {
@@ -53,19 +44,21 @@ const playGame = (rounds = 5) => {
     
     }
 
-    // play multiple rounds
     for (let i = 0; i < rounds; i++) {
-        playRound();
-        console.log(`Player ${humanScore} : ${computerScore} Computer`);
+        let humanChoice = getHumanChoice();
+        let computerChoice = getComputerChoice();
+        playRound(humanChoice, computerChoice);
+        console.log(`Player (${humanChoice}) ${humanScore} : ${computerScore} Computer (${computerChoice})`);
     };
-    // check who won after all rounds
+
     if (humanScore != computerScore) {
         humanScore > computerScore ? alert("You won the game!") : alert ("You lost the game.")
     }
+    
     // one more round if it's a tie
     // BUG: doesn't handle the case where it is also a tie
     else {
-        playRound();
+        playRound(humanChoice, computerChoice);
     }
 }
 
