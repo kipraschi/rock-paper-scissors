@@ -1,0 +1,95 @@
+* {
+    font-family: 'FiraCode Nerd Font', monospace;
+    font-weight: 600;
+}
+
+div {
+    /* border: 1px solid brown; */
+    display: flex;
+}
+
+.content {
+    height: 70vh;
+    width: 650px;
+    margin: 0 auto;
+    text-transform: uppercase;
+    flex-direction: column;
+    justify-content: space-around;
+    min-width: 200px;
+}
+
+.header {
+    flex: auto;
+    border-bottom: 1px solid hsla(0, 0%, 70%, 0.50);
+    justify-content: center;
+    font-size: 32px;
+    margin: 32px;
+}
+
+.header div {
+    padding: 12px 48px;
+}
+
+.playerScore, .computerScore {
+    border-bottom: 2px solid hsla(0, 0%, 70%, 0.50);
+}
+
+.score {
+    justify-content: space-around;
+    gap: 70px;
+}
+
+.score div {
+    padding: 12px 48px;
+}
+
+.buttons {
+    justify-content: space-evenly;
+    margin: 32px 0;
+
+}
+
+.buttons button{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    opacity: 70%;
+
+    height: 150px;
+    width: 150px;
+    border-radius: 50%;
+    border: 0.5px solid hsla(0, 0%, 70%, 0.50);
+}
+
+.buttons button:hover{
+    opacity: 100%;
+    cursor: pointer;
+}
+
+.footer {
+    flex-direction: column;
+    align-items: center;
+    align-self: center;
+    width: 50%;
+}
+
+.footer div {
+    padding: 20px;
+    opacity: 70%;
+}
+
+.win, .tie, .restart {
+    visibility: hidden;
+}
+
+.footer button {
+    background-color: transparent;
+    border: 1px solid hsla(0, 0%, 70%, 0.50);;
+    border-radius: 2em;
+    padding: 8px 12px;
+}
+
+.footer span {
+    color: rgb(185, 0, 0);
+}

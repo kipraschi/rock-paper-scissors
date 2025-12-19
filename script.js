@@ -1,11 +1,22 @@
-const container = document.querySelector(".container");
+const header = document.querySelector(".header");
+const scoreContainer = document.querySelector(".score");
+const buttonContainer = document.querySelector(".buttons");
+const footer = document.querySelector(".footer");
+const restartButton = document.querySelector(".restart");
+restartButton.textContent = "Play again";
+
 const elements = [`Rock`, `Paper`, `Scissors`];
 
+// Create buttons with pictures based on the elements array
 const buttons = elements.map(element => {
-   const btn = document.createElement("button");
-    btn.textContent = element;
+    const btn = document.createElement("button");
+    const img = document.createElement("img");
+    btn.className = element;
+    img.src = `./img/${element.toLowerCase()}.svg`;
+    img.alt = element;
     btn.addEventListener(`click`, playRound);
-    container.appendChild(btn);
+    btn.append(img, element);
+    buttonContainer.appendChild(btn);
     return btn;
 });
 
@@ -17,7 +28,7 @@ function getComputerChoice () {
 let playerScore = 0, computerScore = 0;
 
 function playRound(e) {
-    let playerChoice = e.target.textContent;
+    let playerChoice = e.currentTarget.textContent;
     let computerChoice = getComputerChoice();
     console.log(`Player (${playerChoice}) ${playerScore} : ${computerScore} Computer (${computerChoice})`);
 
