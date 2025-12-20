@@ -4,7 +4,6 @@
 }
 
 div {
-    /* border: 1px solid brown; */
     display: flex;
 }
 
@@ -68,7 +67,7 @@ div {
     border: 0.5px solid black;
 }
 
-.buttons button:hover{
+.buttons button:hover, .restart:hover{
     opacity: 100%;
     cursor: pointer;
 }
@@ -77,26 +76,24 @@ div {
     flex-direction: column;
     align-items: center;
     align-self: center;
-    width: 50%;
 }
 
 .footer div {
     padding: 20px;
+}
+
+.result, .restart {
+    visibility: hidden;
     opacity: 70%;
 }
 
-.result, .tie, .restart {
-    visibility: hidden;
-    /* visibility: visible; */
+.result {
+    font-size: 32px;
 }
 
 .footer button {
     background-color: transparent;
-    border: 1px solid hsla(0, 0%, 70%, 0.5);;
-    border-radius: 2em;
-    padding: 8px 12px;
-}
-
-.footer span {
-    color: rgb(185, 0, 0);
+    border: 1px solid black;
+    border-radius: 1em;
+    padding: 12px 18px;
 }
