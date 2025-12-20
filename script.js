@@ -31,21 +31,28 @@ function playRound(e) {
     
     let playerChoice = buttonClicked.textContent;
     let computerChoice = getComputerChoice();
-    // console.log(`Player (${playerChoice}) ${playerScore} : ${computerScore} Computer (${computerChoice})`);
-    
-    if (playerChoice.toLowerCase() === computerChoice.toLowerCase()) {
+
+    //Check who won the round
+    if (playerChoice === computerChoice) {
         updateDisplay("tie");
     }
     else if (
-        (playerChoice.toLowerCase() == "rock" && computerChoice.toLowerCase() === "paper") ||
-        (playerChoice.toLowerCase() === "paper" && computerChoice.toLowerCase() === "scissors") ||
-        (playerChoice.toLowerCase() === "scissors" && computerChoice.toLowerCase() === "rock")) {
+        (playerChoice == "Rock" && computerChoice === "Paper") ||
+        (playerChoice === "Paper" && computerChoice === "Scissors") ||
+        (playerChoice === "Scissors" && computerChoice === "Rock")) {
             setRoundWinner("computer");
         }
     else {
         setRoundWinner("player");
     }
-    
+
+    function updateDisplay(result) {
+        updateResult(result);
+        highlightResult(result, buttonClicked);
+        updateScore();
+        updateChoices(playerChoice, computerChoice);
+    }
+
     function setRoundWinner(winner) {
         if (winner == "computer") {
             computerScore++;
@@ -56,25 +63,6 @@ function playRound(e) {
             updateDisplay("won");
         }
         if (isGameOver()) stopGame();
-    }
-
-    function updateDisplay(result) {
-        let color = result == "won" ? "green" : result == "lost" ? "red" : "purple";
-
-        if (result == "tie") {
-            resultDisplay.textContent ="It's a tie!";
-        }
-        else {
-            resultDisplay.textContent = `You ${result}!`
-        }
-        displayPlayerChoice.textContent = playerChoice;
-        displayComputerChoice.textContent = computerChoice;
-        displayPlayerScore.textContent = `Player: ${playerScore}`;
-        displayComputerScore.textContent = `Computer: ${computerScore}`;
-        buttonClicked.style.color = color;
-        buttonClicked.style.borderColor = color;
-        resultDisplay.style.color = color;
-        resultDisplay.style.visibility = "visible";
     }
 }
 
@@ -99,9 +87,7 @@ function resetGame() {
     computerScore = 0;
     resetRound();
     restartButton.style.visibility = "hidden";
-    //Repeating code, needs refactoring
-    displayPlayerScore.textContent = `Player: ${playerScore}`;
-    displayComputerScore.textContent = `Computer: ${computerScore}`;
+    updateScore();
     disableButtons(false);
 }
 
@@ -111,11 +97,39 @@ function resetRound() {
         btn.style.color = color;
         btn.style.borderColor = color;
     });
-    resultDisplay.style.visibility = "hidden";
+    resultDisplay.textContent = "Choose your weapon...";
+    resultDisplay.style.color = "black";
+    updateChoices(">>>", "<<<");
+}
+
+function updateScore() {
+    displayPlayerScore.textContent = `Player: ${playerScore}`;
+    displayComputerScore.textContent = `Computer: ${computerScore}`;
+}
+
+function updateChoices(playerChoice, computerChoice) {
+    displayPlayerChoice.textContent = playerChoice;
+    displayComputerChoice.textContent = computerChoice;
+}
+
+function updateResult(result){
+    if (result == "tie") {
+        resultDisplay.textContent ="It's a tie!";
+    }
+    else {
+        resultDisplay.textContent = `You ${result}!`
+    }
+}
+
+function highlightResult(result, buttonClicked){
+    let color = result == "won" ? "green" : result == "lost" ? "red" : "purple";
+    buttonClicked.style.color = color;
+    buttonClicked.style.borderColor = color;
+    resultDisplay.style.color = color;
 }
 
 function disableButtons(state) {
-        buttons.forEach(btn => {
+    buttons.forEach(btn => {
         btn.disabled = state;
     });
 }

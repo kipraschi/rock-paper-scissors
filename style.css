@@ -82,7 +82,7 @@ div {
     padding: 20px;
 }
 
-.result, .restart {
+.restart {
     visibility: hidden;
     opacity: 70%;
 }
