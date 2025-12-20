@@ -6,6 +6,7 @@ const buttonContainer = document.querySelector(".buttons");
 const resultDisplay = document.querySelector(".result");
 const restartButton = document.querySelector(".restart");
 restartButton.textContent = "Play again";
+restartButton.addEventListener(`click`, resetGame);
 
 const elements = [`Rock`, `Paper`, `Scissors`];
 
@@ -19,7 +20,6 @@ const buttons = elements.map(element => {
     btn.addEventListener(`click`, playRound);
     btn.append(img, element);
     buttonContainer.appendChild(btn);
-    restartButton.addEventListener(`click`, resetGame);
     return btn;
 });
 
